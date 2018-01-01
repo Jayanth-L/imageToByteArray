@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //-----------------------------------------------------------------
+                //just for confirmation
                 for (i=0; i<bytes.length; i++) {
                     for (j=0;j<bytes.length; j++) {
                         if(bytes[i] == decodedArray[j]) {
@@ -82,8 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                //-----------------------------------------------------------------
                 if(count == bytes.length) {
-                    Toast.makeText(this, bytes.length + "&" + count, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Both are equal :)", Toast.LENGTH_SHORT).show();
                 }
                 //Toast.makeText(this,byteArray.length() + "||" + decodearray.length(),Toast.LENGTH_SHORT).show();
                 if(byteArray.equals(decodearray)) {
