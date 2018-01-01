@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private String[] filepaths;
     private String[] filenames;
     int i;
+    int j;
+    int count=0;
     String byteArray = "";
     String encodedbase64value = "";
     String decodearray = "";
@@ -60,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 byte[] bytes = bos.toByteArray();
                 String encodedString = Base64.encodeToString(bytes, Base64.URL_SAFE | Base64.NO_WRAP);
                 byte[] decodedArray = Base64.decode(encodedString, Base64.URL_SAFE | Base64.NO_WRAP);
-                if (bytes == decodedArray) {
-                    Toast.makeText(this, "True", Toast.LENGTH_LONG).show();
+                if (bytes.equals(decodedArray)) {
+                    //Toast.makeText(this, "True", Toast.LENGTH_LONG).show();
                 }
                 for (i=0;i<bytes.length;i++) {
                     byteArray = byteArray + ", " + bytes[i];
@@ -69,8 +71,22 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.i("Now","value :" + i);
                 }
-                //Toast.makeText(this,byteArray + " || " + decodearray,Toast.LENGTH_SHORT).show();
-                if(byteArray == decodearray) {
+
+                //-----------------------------------------------------------------
+                for (i=0; i<bytes.length; i++) {
+                    for (j=0;j<bytes.length; j++) {
+                        if(bytes[i] == decodedArray[j]) {
+                            if(i==j) {
+                                count++;
+                            }
+                        }
+                    }
+                }
+                if(count == bytes.length) {
+                    Toast.makeText(this, bytes.length + "&" + count, Toast.LENGTH_SHORT).show();
+                }
+                //Toast.makeText(this,byteArray.length() + "||" + decodearray.length(),Toast.LENGTH_SHORT).show();
+                if(byteArray.equals(decodearray)) {
                     //Toast.makeText(this, "True", Toast.LENGTH_SHORT).show();
                 }
 
